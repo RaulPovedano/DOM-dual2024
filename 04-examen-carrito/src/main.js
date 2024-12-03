@@ -4,6 +4,8 @@ import Carrito from "./components/Carrito";
 import { Producto } from "./components/Producto";
 
 const carrito = new Carrito()
+carrito.cargarLocalStorage();
+console.log(carrito);
 
 //declaracion de funciones
 
@@ -20,12 +22,12 @@ const renderListaCarrito = () => {
     //pongo total
     total.textContent = carrito.calcularTotal();
 
-    listaProductos.querySelectorAll(".btn-borrar").addEventListener("click")
-    }
+    carrito.guardarLocalStorage();
     
+    }
 
 
-function agregarProductoHandle(event){
+function agregarProductoHandler(event){
     // no recargar pagina
     event.preventDefault();
     const nombre = document.getElementById("nombre-producto").value.trim();
@@ -45,7 +47,24 @@ function agregarProductoHandle(event){
     event.target.reset();
 }
 
-function renderCarrito(){
+const manejarAccionesHandler = (event) =>{
+    const indice = Number(event.target.dataset.id)
+   if (event.target.classList.contains("btn-borrar")){
+    carrito.borrarProducto(indice);
+    renderListaCarrito();
+   }
+
+   if (event.target.classList.contains("btn-editar")){
+  const newCantidad = Number( prompt("Introduce Cantidad nueva", carrito.productos[indice].cantidad))
+  // una vez tengo la nueva cantidad modifico el carrito de productos
+
+    carrito.editarProducto(indice, newCantidad);
+
+  renderListaCarrito();
+   }
+}
+
+function init(){
 //crear h1 --carrito <--- create element
 const app = document.getElementById("app");
 const carritoH1 = document.createElement("h1")
@@ -72,12 +91,14 @@ app.innerHTML +=`
     </footer>
     `
 
-    app.addEventListener("submit", agregarProductoHandle)
+    document.getElementById("form-producto").addEventListener("submit", agregarProductoHandler)
+    document.getElementById("lista-productos").addEventListener("click", manejarAccionesHandler)
 
-
+    //siempre una vez cargue la pagina cargue el carrito
+    renderListaCarrito();
 }
 
-renderCarrito()
+init()
 
 
 
