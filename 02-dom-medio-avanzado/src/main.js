@@ -8,9 +8,9 @@ import divForm from "./components/divForm.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const app = document.getElementById('app')
-    // const divFormulario = divForm();
+     const divFormulario = divForm();
 
-    // app.appendChild(divFormulario);
+     app.appendChild(divFormulario);
     
 })
 

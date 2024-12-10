@@ -1,0 +1,39 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Camiseta",
+            "price": 19.99,
+            "description": "Camiseta de algodón.",
+            "category": "Ropa"
+        },
+        {
+            "id": 2,
+            "name": "Jeans",
+            "price": 49.99,
+            "description": "Jeans.",
+            "category": "Ropa"
+        },
+        {
+            "id": 3,
+            "name": "Chaqueta",
+            "price": 89.95,
+            "description": "Chaqueta elegante y cálida para clima frío, con cremallera y bolsillos.",
+            "category": "Ropa"
+        },
+        {
+            "id": 4,
+            "name": "Zapatillas",
+            "price": 69.50,
+            "description": "Zapatillas para deporte.",
+            "category": "Calzado"
+        },
+        {
+            "id": 5,
+            "name": "Suéter",
+            "price": 39.99,
+            "description": "Suéter de punto.",
+            "category": "Ropa"
+    }
+    ]
+}
